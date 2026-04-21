@@ -33,18 +33,27 @@ fn-design-system/
 
 Read `DESIGN_SYSTEM.md`. It is the single source of truth.
 
+## Remotes
+
+| Remote | URL |
+|--------|-----|
+| `gitea` | `https://gitea-dgg044oo04woo4ggcsws4gk0.organic-machine.com/dataforge/fn-design-system` |
+| `github` | `https://github.com/gutierenmanuel/fn-design-system` |
+
+The GitHub copy is the one to link in Claude Design.
+
 ## How to re-sync
 
 When you add or modify components in `fn_registry/frontend/functions/ui/`:
 
 ```bash
-./sync_from_registry.sh
+./sync_from_registry.sh             # pulls from fn_registry
 git add -A
 git commit -m "sync: <what changed>"
-git push
+./push_all.sh                       # pushes to gitea + github
 ```
 
-The script auto-detects the fn_registry root when the mirror lives at `fn_registry/subrepos/fn-design-system/`. Override with `FN_REGISTRY_ROOT=/path/to/fn_registry` if needed.
+The sync script auto-detects the fn_registry root when the mirror lives at `fn_registry/subrepos/fn-design-system/`. Override with `FN_REGISTRY_ROOT=/path/to/fn_registry` if needed.
 
 ## What is NOT in this repo
 
