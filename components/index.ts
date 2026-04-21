@@ -36,7 +36,11 @@ export type { Series } from './chart_container'
 
 // Data
 export { DataTable } from './data_table'
-export type { DataTableProps, ColumnDef } from './data_table'
+export type { DataTableProps, ColumnDef, DataTableDensity } from './data_table'
+export { FunnelChart } from './funnel_chart'
+export type { FunnelChartProps, FunnelStage } from './funnel_chart'
+export { HeatmapGrid } from './heatmap_grid'
+export type { HeatmapGridProps, HeatmapColumn } from './heatmap_grid'
 
 // Mantine Provider
 export { FnMantineProvider } from './mantine_provider'

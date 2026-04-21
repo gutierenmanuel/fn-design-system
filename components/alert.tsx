@@ -1,11 +1,14 @@
 import * as React from 'react'
 import { Alert as MantineAlert, Box, Text } from '@mantine/core'
 
-type AlertVariant = 'default' | 'destructive'
+type AlertVariant = 'default' | 'destructive' | 'success' | 'warning' | 'info'
 
 const variantColorMap: Record<AlertVariant, string | undefined> = {
   default: undefined,
   destructive: 'red',
+  success: 'green',
+  warning: 'yellow',
+  info: 'blue',
 }
 
 function Alert({

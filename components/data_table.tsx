@@ -10,6 +10,8 @@ interface ColumnDef {
   align?: 'left' | 'right' | 'center'
 }
 
+type DataTableDensity = 'compact' | 'cozy' | 'roomy'
+
 interface DataTableProps {
   data: Record<string, unknown>[]
   columns?: ColumnDef[]
@@ -18,6 +20,14 @@ interface DataTableProps {
   maxHeight?: number | string
   loading?: boolean
   error?: Error | null
+  /** Row padding preset. compact=4/8, cozy=6/12 (default), roomy=10/16. */
+  density?: DataTableDensity
+}
+
+const DENSITY_MAP: Record<DataTableDensity, { py: number; px: 'xs' | 'sm' | 'md' }> = {
+  compact: { py: 4, px: 'xs' },
+  cozy:    { py: 6, px: 'sm' },
+  roomy:   { py: 10, px: 'md' },
 }
 
 function formatCell(value: unknown, format?: string): string {
@@ -52,7 +62,9 @@ function DataTableComponent({
   maxHeight = 500,
   loading = false,
   error = null,
+  density = 'cozy',
 }: DataTableProps) {
+  const pad = DENSITY_MAP[density]
   // Auto-detect columns from first row if not provided
   const effectiveColumns: ColumnDef[] = (columns && columns.length > 0)
     ? columns
@@ -113,8 +125,8 @@ function DataTableComponent({
                 fw={500}
                 c="dimmed"
                 tt="uppercase"
-                py={6}
-                px="sm"
+                py={pad.py}
+                px={pad.px}
               >
                 {col.label}
               </Table.Th>
@@ -131,8 +143,8 @@ function DataTableComponent({
                     key={col.key}
                     style={{ textAlign: align, fontFamily: 'var(--mantine-font-family-monospace)', ...heatmapStyle(col.key, row[col.key]) }}
                     fz="xs"
-                    py={6}
-                    px="sm"
+                    py={pad.py}
+                    px={pad.px}
                   >
                     {formatCell(row[col.key], col.format)}
                   </Table.Td>
@@ -152,4 +164,4 @@ function DataTableComponent({
 }
 
 export const DataTable = DataTableComponent
-export type { DataTableProps, ColumnDef }
+export type { DataTableProps, ColumnDef, DataTableDensity }

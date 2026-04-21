@@ -3,10 +3,10 @@ name: data_table
 kind: component
 lang: ts
 domain: ui
-version: "1.0.0"
+version: "1.1.0"
 purity: impure
 signature: "DataTable(props: DataTableProps): JSX.Element"
-description: "Tabla de datos con sticky header, overflow scroll, heatmap por columna, formato condicional (number/datetime/currency) y hover rows. Auto-detecta columnas desde la primera fila si no se proveen."
+description: "Tabla de datos con sticky header, overflow scroll, heatmap por columna, formato condicional (number/datetime/currency), hover rows y densidad configurable (compact/cozy/roomy). Auto-detecta columnas desde la primera fila si no se proveen."
 tags: [table, data, heatmap, dashboard, component, ui, format, visualization]
 uses_functions: []
 uses_types: []
@@ -44,6 +44,10 @@ props:
     type: "Error | null"
     required: false
     description: "Error a mostrar si la carga falló."
+  - name: density
+    type: "'compact' | 'cozy' | 'roomy'"
+    required: false
+    description: "Padding vertical y horizontal de filas. compact=4/xs, cozy=6/sm (default), roomy=10/md."
 emits: []
 has_state: false
 framework: react
