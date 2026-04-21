@@ -13,10 +13,11 @@ Plantillas listas para pegar en `claude.ai/design`. Copias, rellenas los `{PLACE
 | 06 | [error.md](error.md) | 404 / 500 / 403 / custom. |
 | 07 | [custom.md](custom.md) | Pantalla libre que no encaja en ninguna plantilla. |
 | 08 | [handoff_integrate.md](handoff_integrate.md) | **Para Claude Code (yo)** — integrar un export de Claude Design al registry. |
+| 09 | [questionnaire.md](questionnaire.md) | **Guía del agente** — cuestionario numerado para rellenar plantillas rápido. |
 
 ## Flujo estándar
 
 1. **Primera vez en el proyecto** → pegas `onboarding.md`.
-2. **Cada pantalla nueva** → copias la plantilla que aplica, rellenas, pegas.
+2. **Cada pantalla nueva** → dices al agente "quiero un prompt de dashboard / crud / ..." y el agente te lanza el **cuestionario numerado** (ver `questionnaire.md`). Respondes con `1,2,3` y él construye el prompt completo.
 3. **Cuando te guste el diseño** → "Handoff to Claude Code" en Claude Design.
 4. **De vuelta aquí** → me pegas el export + `handoff_integrate.md`, yo lo adapto al repo.
