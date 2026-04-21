@@ -6,19 +6,32 @@
 #   fn_registry/frontend/package.json (filtered) → package.json (not overwritten)
 #
 # Usage:
-#   FN_REGISTRY_ROOT=~/fn_registry ./sync_from_registry.sh
-#   ./sync_from_registry.sh   # uses default ~/fn_registry
+#   ./sync_from_registry.sh                              # auto-detects when inside fn_registry/subrepos/
+#   FN_REGISTRY_ROOT=/path/to/fn_registry ./sync_from_registry.sh
 
 set -euo pipefail
 
 MIRROR_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REGISTRY_ROOT="${FN_REGISTRY_ROOT:-$HOME/fn_registry}"
+
+# Resolve fn_registry root:
+#   1. $FN_REGISTRY_ROOT if set
+#   2. two levels up from script (mirror at fn_registry/subrepos/fn-design-system/)
+#   3. $HOME/fn_registry as last resort
+if [[ -n "${FN_REGISTRY_ROOT:-}" ]]; then
+  REGISTRY_ROOT="$FN_REGISTRY_ROOT"
+elif [[ -d "$MIRROR_ROOT/../../frontend/functions/ui" ]]; then
+  REGISTRY_ROOT="$(cd "$MIRROR_ROOT/../.." && pwd)"
+else
+  REGISTRY_ROOT="$HOME/fn_registry"
+fi
 
 if [[ ! -d "$REGISTRY_ROOT/frontend/functions/ui" ]]; then
   echo "ERROR: $REGISTRY_ROOT/frontend/functions/ui not found." >&2
   echo "Set FN_REGISTRY_ROOT to your fn_registry clone." >&2
   exit 1
 fi
+
+echo "→ Registry root: $REGISTRY_ROOT"
 
 SRC_UI="$REGISTRY_ROOT/frontend/functions/ui"
 SRC_DOC="$REGISTRY_ROOT/frontend/DESIGN_SYSTEM.md"

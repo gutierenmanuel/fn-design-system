@@ -1,6 +1,8 @@
 # fn-design-system
 
-**Read-only mirror of `@fn_library`** — the React 19 + Mantine v9 design system that lives inside [fn_registry](../fn_registry).
+**Read-only mirror of `@fn_library`** — the React 19 + Mantine v9 design system that lives inside [fn_registry](../..).
+
+This repo is checked out at `fn_registry/subrepos/fn-design-system/` (gitignored by fn_registry so it keeps its own git history and remotes).
 
 This repo exists for one purpose: **give Claude Design (and other external tools) a clean, minimal view of the design system** without exposing the rest of the monorepo.
 
@@ -42,7 +44,7 @@ git commit -m "sync: <what changed>"
 git push
 ```
 
-The script requires `FN_REGISTRY_ROOT` to point at your local fn_registry clone (defaults to `~/fn_registry`).
+The script auto-detects the fn_registry root when the mirror lives at `fn_registry/subrepos/fn-design-system/`. Override with `FN_REGISTRY_ROOT=/path/to/fn_registry` if needed.
 
 ## What is NOT in this repo
 
