@@ -1,0 +1,32 @@
+{
+  "name": "fn-design-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Read-only mirror of @fn_library — React 19 + Mantine v9 design system from fn_registry. For consumption by Claude Design.",
+  "type": "module",
+  "main": "components/index.ts",
+  "dependencies": {
+    "@fontsource-variable/geist": "^5.2.8",
+    "@mantine/charts": "^9.0.0",
+    "@mantine/core": "^9.0.0",
+    "@mantine/dates": "^9.0.1",
+    "@mantine/dropzone": "^9.0.1",
+    "@mantine/form": "^9.0.0",
+    "@mantine/hooks": "^9.0.0",
+    "@mantine/notifications": "^9.0.0",
+    "@tabler/icons-react": "^3.41.1",
+    "dayjs": "^1.11.20",
+    "graphology": "^0.26.0",
+    "graphology-layout-forceatlas2": "^0.10.1",
+    "graphology-types": "^0.24.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "recharts": "^3.8.1",
+    "sigma": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^6.0.2"
+  }
+}
